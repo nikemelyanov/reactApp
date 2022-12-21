@@ -3,6 +3,7 @@
   padding: 0px;
   text-decoration: none;
   list-style-type: none;
+  box-sizing: border-box;
 }
 
 body {
@@ -163,9 +164,21 @@ header {
     background: #FFFFFF;
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    
-    .cart-margin-bottom {
+
+    display: flex;
+    flex-direction: column;
+
+    .cart-name {
       margin-bottom: 30px;
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow: auto;
+      margin-bottom: 40px;
     }
 
     .cart-item {
@@ -199,20 +212,77 @@ header {
       .cart-center-info {
         margin-right: 20px;
       }
+    }
 
-      .cart-item-remove-button {
-        cursor: pointer;
-        opacity: 0.5;
-        transition: 0.15s;
+    .cart-item-remove-button {
+      cursor: pointer;
+      opacity: 0.5;
+      transition: 0.15s;
 
-        &:hover {
-          opacity: 1;
-        }
+      &:hover {
+        opacity: 1;
       }
     }
 
-    .cart-bottom-ul {
-      display: flex;
+    .cart-bottom {
+      .cart-bottom-ul {
+        margin-bottom: 40px;
+      }
+
+      .cart-bottom-li {
+        margin-bottom: 20px;
+
+        display: flex;
+        align-items: flex-end;
+
+        div {
+          flex: 1;
+          height: 1px;
+          border-bottom: 1px dashed #DFDFDF;
+          margin: 0 7px;
+          position: relative;
+          top: -4px;
+
+        }
+      }
+
+      .cart-bottom-button {
+        width: 100%;
+        height: 55px;
+        background: #9DD558;
+        border-radius: 18px;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        transition: 0.2s;
+        cursor: pointer;
+
+        &:hover {
+          background: lighten(#9DD558, 5%);
+        }
+
+        &:active {
+          background: darken(#9DD558, 5%);
+        }
+      }
+
+      .cart-bottom-button {
+        position: relative;
+
+        &:hover {
+          img {
+            transform: translateX(5px);
+          }
+        }
+
+        img {
+          position: absolute;
+          right: 30px;
+          top: 21px;
+          transition: transform 0.15s;
+        }
+      }
     }
   }
 }
