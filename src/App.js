@@ -1,61 +1,47 @@
+import Card from './components/Card';
+import Header from './components/Header';
+import Cart from './components/Cart';
+
+// 1:30
+const arr = [
+  {
+    title: 'Мужские кросовки Nike Blazer Mid suede',
+    price: 12999,
+    imageUrl: '/img/photo-shpickers/cross-1.jpg'
+  },
+  {
+    title: 'Мужские Кроссовки Nike Air Max 270',
+    price: 12999,
+    imageUrl: '/img/photo-shpickers/cross-2.jpg'
+  },
+  {
+    title: 'Мужские Кроссовки Nike Lebron XVIII Low',
+    price: 7999,
+    imageUrl: '/img/photo-shpickers/cross-3.jpg'
+  },
+  {
+    title: 'Кроссовки Puma X Aka Boku Future Rider',
+    price: 15999,
+    imageUrl: '/img/photo-shpickers/cross-4.jpg'
+  },
+  {
+    title: 'Мужские Кроссовки Under Armour Curry 8',
+    price: 12999,
+    imageUrl: '/img/photo-shpickers/cross-5.jpg'
+  },
+  {
+    title: 'Мужские Кроссовки Jordan Air Jordan 11',
+    price: 6900,
+    imageUrl: '/img/photo-shpickers/cross-6.jpg'
+  }
+]
+
 function App() {
   return (
     <div className="wrapper">
-      <div className="overlay">
-        <div className="cart">
-          <h2 className="cart-name">Корзина <img className="cart-item-remove-button" src="/img/icon-cart-remove-active.svg" alt="Remove" /></h2>
+      <Cart />
 
-          <div className="cart-items">
-            <div className="cart-item">
-              <div className="cart-item-cross-img" style={{ backgroundImage: 'url(/img/photo-shpickers/cross-1.jpg)' }}>
-              </div>
-              <div className="cart-center-info">
-                <p>Мужские Кроссовки Nike Air Max 270</p>
-                <b>12 999 руб.</b>
-              </div>
-              <img className="cart-item-remove-button" src="/img/icon-cart-remove-active.svg" alt="Remove" />
-            </div>
-          </div>
-
-          <div className="cart-bottom">
-            <ul className="cart-bottom-ul">
-              <li className="cart-bottom-li">
-                <span>Итого:</span>
-                <div></div>
-                <b>21 498 руб. </b>
-              </li>
-              <li className="cart-bottom-li">
-                <span>Налог 5%:</span>
-                <div></div>
-                <b>1074 руб. </b>
-              </li>
-            </ul>
-            <button className="cart-bottom-button">Оформить заказ <img src="/img/icon-cart-button-arrow.svg" alt="Arrow" /></button>
-          </div>
-        </div>
-      </div>
-
-      <header>
-        <div className="header-logo">
-          <img width={40} height={40} src="/img/logo.png" />
-          <div className="header-logo-title">
-            <h3>React Sneakers</h3>
-            <p>Магазин кроссов</p>
-          </div>
-        </div>
-        <ul className="header-right">
-          <li>
-            <img width={18} height={18} src='/img/header/icon-cart.svg' />
-            <span>1260 руб.</span>
-          </li>
-          <li>
-            <img width={18} height={18} src='/img/header/icon-head-likes.svg' />
-          </li>
-          <li>
-            <img width={18} height={18} src='/img/header/icon-user.svg' />
-          </li>
-        </ul>
-      </header>
+      <Header />
 
       <div className="content">
         <div className="all-cross-and-input-serach">
@@ -67,22 +53,13 @@ function App() {
         </div>
 
         <div className="shpickers">
-          <div className="card">
-            <div className="card-favorite">
-              <img width={30} height={30} src="/img/icon-card-likes.svg" alt="icon-card-likes" />
-            </div>
-            <img className="card-img" width={133} height={112} src="/img/photo-shpickers/cross-1.jpg" alt="cross" />
-            <p className="card-info">Мужские Кроссовки Nike Blazer Mid Suede</p>
-            <div className="card-bottom">
-              <div className="card-bottom-price">
-                <span>Цена:</span>
-                <b>12 999 руб.</b>
-              </div>
-              <button className="card-bottom-button-plus">
-                <img width={32} height={32} src="/img/icon-card-plus.svg" alt="Plus" />
-              </button>
-            </div>
-          </div>
+          {arr.map((obj) => (
+              <Card 
+                title={obj.title}
+                price={obj.price}
+                imageUrl={obj.imageUrl}
+              />
+            ))}
         </div>
       </div>
     </div>
