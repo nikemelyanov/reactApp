@@ -1,0 +1,138 @@
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+
+  .cart {
+    position: absolute;
+    width: 420px;
+    height: 100%;
+    right: 0;
+    background: #ffffff;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    .cartName {
+      margin-bottom: 30px;
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cartItems {
+      flex: 1;
+      overflow: auto;
+      margin-bottom: 40px;
+    }
+
+    .cartItem {
+      border: 1px solid #f3f3f3;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 15px 30px;
+      margin-bottom: 20px;
+
+      display: flex;
+      align-items: center;
+
+      .cartItemCrossImg {
+        width: 70px;
+        height: 70px;
+        background-size: contain;
+        background-position: 0 10px;
+        background-repeat: no-repeat;
+        margin-right: 20px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      b {
+        font-size: 14px;
+      }
+
+      .cartCenterInfo {
+        margin-right: 20px;
+      }
+    }
+
+    .cartItemRemoveButton {
+      cursor: pointer;
+      opacity: 0.5;
+      transition: 0.15s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .cartBottom {
+      .cartBottomUl {
+        margin-bottom: 40px;
+      }
+
+      .cartBottomLi {
+        margin-bottom: 20px;
+
+        display: flex;
+        align-items: flex-end;
+
+        div {
+          flex: 1;
+          height: 1px;
+          border-bottom: 1px dashed #dfdfdf;
+          margin: 0 7px;
+          position: relative;
+          top: -4px;
+        }
+      }
+
+      .cartBottomButton {
+        width: 100%;
+        height: 55px;
+        background: #9dd558;
+        border-radius: 18px;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        transition: 0.2s;
+        cursor: pointer;
+
+        &:hover {
+          background: lighten(#9dd558, 5%);
+        }
+
+        &:active {
+          background: darken(#9dd558, 5%);
+        }
+      }
+
+      .cartBottomButton {
+        position: relative;
+
+        &:hover {
+          img {
+            transform: translateX(5px);
+          }
+        }
+
+        img {
+          position: absolute;
+          right: 30px;
+          top: 21px;
+          transition: transform 0.15s;
+        }
+      }
+    }
+  }
+}

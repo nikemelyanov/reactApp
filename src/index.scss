@@ -8,77 +8,37 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #E7F6FF;
+  background: #e7f6ff;
 }
 
 button,
 input {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .wrapper {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   max-width: 1080px;
   margin: 50px auto;
 }
 
-header {
-  padding: 40px;
-  border-bottom: 1px solid #EAEAEA;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .header-logo {
-    display: flex;
-    align-items: center;
-
-    img {
-      margin-right: 15px;
-    }
-
-    h3 {
-      text-transform: uppercase;
-    }
-  }
-
-  .header-right {
-    list-style-type: none;
-
-    display: flex;
-
-    li {
-      img {
-        margin-right: 30px;
-        cursor: pointer;
-      }
-
-      span {
-        margin-right: 30px;
-      }
-    }
-
-  }
-}
-
 .content {
   padding: 40px;
 
-  .all-cross-and-input-serach {
+  .allCrossAndInputSerach {
     padding-bottom: 40px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .search-block {
-      border: 1px solid #F3F3F3;
+    .searchBlock {
+      border: 1px solid #f3f3f3;
       border-radius: 10px;
       padding: 0 15px;
 
@@ -91,7 +51,6 @@ header {
         font-size: 16px;
         width: 200px;
       }
-
     }
   }
 
@@ -100,189 +59,5 @@ header {
     flex-wrap: wrap;
     gap: 30px;
   }
-
-  .card {
-    width: 210px;
-    border: 1px solid #F3F3F3;
-    border-radius: 40px;
-    padding: 20px;
-    transition: box-shadow 0.2s, transform 0.2s;
-
-    &:hover {
-      box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.05);
-      transform: translateY(-5px);
-    }
-
-    .card-favorite {
-      position: absolute;
-      cursor: pointer;
-    }
-
-    .card-info {
-      margin-top: 20px;
-      font-weight: 400;
-      font-size: 14px;
-      cursor: default;
-    }
-
-    .card-bottom {
-      margin-top: 20px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .card-bottom-price {
-      display: flex;
-      flex-direction: column;
-    }
-
-    button {
-      background: #FFFFFF;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  }
 }
 
-.overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-
-  .cart {
-    position: absolute;
-    width: 420px;
-    height: 100%;
-    right: 0;
-    background: #FFFFFF;
-    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-
-    display: flex;
-    flex-direction: column;
-
-    .cart-name {
-      margin-bottom: 30px;
-
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .cart-items {
-      flex: 1;
-      overflow: auto;
-      margin-bottom: 40px;
-    }
-
-    .cart-item {
-      border: 1px solid #F3F3F3;
-      border-radius: 20px;
-      overflow: hidden;
-      padding: 15px 30px;
-      margin-bottom: 20px;
-
-      display: flex;
-      align-items: center;
-
-      .cart-item-cross-img {
-        width: 70px;
-        height: 70px;
-        background-size: contain;
-        background-position: 0 10px;
-        background-repeat: no-repeat;
-        margin-right: 20px;
-      }
-
-      p {
-        font-size: 16px;
-        margin-bottom: 5px;
-      }
-
-      b {
-        font-size: 14px;
-      }
-
-      .cart-center-info {
-        margin-right: 20px;
-      }
-    }
-
-    .cart-item-remove-button {
-      cursor: pointer;
-      opacity: 0.5;
-      transition: 0.15s;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
-
-    .cart-bottom {
-      .cart-bottom-ul {
-        margin-bottom: 40px;
-      }
-
-      .cart-bottom-li {
-        margin-bottom: 20px;
-
-        display: flex;
-        align-items: flex-end;
-
-        div {
-          flex: 1;
-          height: 1px;
-          border-bottom: 1px dashed #DFDFDF;
-          margin: 0 7px;
-          position: relative;
-          top: -4px;
-
-        }
-      }
-
-      .cart-bottom-button {
-        width: 100%;
-        height: 55px;
-        background: #9DD558;
-        border-radius: 18px;
-        border: none;
-        color: #fff;
-        font-size: 16px;
-        font-weight: 500;
-        transition: 0.2s;
-        cursor: pointer;
-
-        &:hover {
-          background: lighten(#9DD558, 5%);
-        }
-
-        &:active {
-          background: darken(#9DD558, 5%);
-        }
-      }
-
-      .cart-bottom-button {
-        position: relative;
-
-        &:hover {
-          img {
-            transform: translateX(5px);
-          }
-        }
-
-        img {
-          position: absolute;
-          right: 30px;
-          top: 21px;
-          transition: transform 0.15s;
-        }
-      }
-    }
-  }
-}
