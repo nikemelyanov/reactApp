@@ -36,3 +36,26 @@ header {
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  header {
+    padding: 15px;
+
+    .headerRight {
+      span {
+        display: none;
+      }
+
+      li {
+        img {
+          margin-right: 10px;
+          cursor: pointer;
+        }
+
+        span {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

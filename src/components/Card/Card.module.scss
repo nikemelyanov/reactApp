@@ -42,3 +42,16 @@
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 350px;
+    padding: 20px;
+    margin-bottom: 30px;
+
+    .carImageUrl {
+      height: 200px;
+      width: auto;
+    }
+  }
+}

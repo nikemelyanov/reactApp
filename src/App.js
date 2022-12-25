@@ -1,8 +1,7 @@
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
-
-// 1:30
+// 56:00
 const arr = [
   {
     title: "Мужские кросовки Nike Blazer Mid suede",
@@ -59,6 +58,8 @@ function App() {
               title={obj.title}
               price={obj.price}
               imageUrl={obj.imageUrl}
+              addToCart={() => console.log('Plus')}
+              addToFavorite={() => console.log('Favorite')}
             />
           ))}
         </div>
