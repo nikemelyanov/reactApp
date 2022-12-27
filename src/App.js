@@ -1,7 +1,9 @@
+import React from "react";
+
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
-// 56:00
+// 1:34
 const arr = [
   {
     title: "Мужские кросовки Nike Blazer Mid suede",
@@ -36,11 +38,13 @@ const arr = [
 ];
 
 function App() {
+  const [cartOpened, setCartOpened] = React.useState(false);
+
   return (
     <div className="wrapper">
-      <Cart />
+      {cartOpened ? <Cart onClose={() => setCartOpened(false)} /> : null}
 
-      <Header />
+      <Header onClickCart={() => setCartOpened(true)} />
 
       <div className="content">
         <div className="allCrossAndInputSerach">
@@ -58,8 +62,8 @@ function App() {
               title={obj.title}
               price={obj.price}
               imageUrl={obj.imageUrl}
-              addToCart={() => console.log('Plus')}
-              addToFavorite={() => console.log('Favorite')}
+              addToCart={() => console.log("Plus")}
+              addToFavorite={() => console.log("Favorite")}
             />
           ))}
         </div>

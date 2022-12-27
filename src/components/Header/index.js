@@ -1,6 +1,7 @@
-import styles from './Header.module.scss'
+import styles from "./Header.module.scss";
 
-function Header() {
+function Header(props) {
+
   return (
     <header>
       <div className={styles.headerLogo}>
@@ -11,15 +12,30 @@ function Header() {
         </div>
       </div>
       <ul className={styles.headerRight}>
-        <li>
-          <img width={18} height={18} src="/img/header/icon-cart.svg" />
+        <li onClick={props.onClickCart}>
+          <img
+            width={18}
+            height={18}
+            src="/img/header/icon-cart.svg"
+            alt="Cart"
+          />
           <span>1260 руб.</span>
         </li>
         <li>
-          <img width={18} height={18} src="/img/header/icon-head-likes.svg" />
+          <img
+            width={18}
+            height={18}
+            src="/img/header/icon-head-likes.svg"
+            alt="Favorite"
+          />
         </li>
         <li>
-          <img width={18} height={18} src="/img/header/icon-user.svg" />
+          <img
+            width={18}
+            height={18}
+            src="/img/header/icon-user.svg"
+            alt="User"
+          />
         </li>
       </ul>
     </header>

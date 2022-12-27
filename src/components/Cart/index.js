@@ -1,12 +1,13 @@
 import styles from "./Cart.module.scss";
 
-function Overlay() {
+function Overlay(props) {
   return (
-    <div className={styles.overlay} style={{ display: 'none' }}>
+    <div className={styles.overlay}>
       <div className={styles.cart}>
         <h2 className={styles.cartName}>
           Корзина{" "}
           <img
+            onClick={props.onClose}
             className={styles.cartItemRemoveButton}
             src="/img/icon-cart-remove-active.svg"
             alt="Remove"
