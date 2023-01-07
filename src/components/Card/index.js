@@ -1,35 +1,47 @@
 import React from "react";
 import styles from "./Card.module.scss";
 
-function Card(props) {
-  const [isAdded, setIsAdded] = React.useState(false);
+function Card({title, price, imageUrl, addToCart, addToFavorite }) {
 
+  const [isAdded, setIsAdded] = React.useState(false);
   const onClickPlus = () => {
+    addToCart({title, imageUrl, price})
     setIsAdded(!isAdded)
+  };
+
+  const [isLiked, setIsLiked] = React.useState(false);
+  const onClickLike = () => {
+    addToFavorite()
+    setIsLiked(!isLiked)
   };
 
   return (
     <div className={styles.card}>
-      <div className={styles.cardFavorite} onClick={props.addToFavorite}>
+      <div className={styles.cardFavorite}>
         <img
           alt="Favorite"
           width={30}
           height={30}
-          src="/img/icon-card-likes.svg"
+          onClick={onClickLike}
+          src={
+            isLiked
+              ? "/img/icon-card-likes-active.svg"
+              : "/img/icon-card-likes.svg"
+          }
         />
       </div>
       <img
         className={styles.carImageUrl}
         width={133}
         height={112}
-        src={props.imageUrl}
+        src={imageUrl}
         alt="cross"
       />
-      <h5 className={styles.cardInfo}>{props.title}</h5>
+      <h5 className={styles.cardInfo}>{title}</h5>
       <div className={styles.cardBottom}>
         <div className={styles.cardBottomPrice}>
           <span>Цена:</span>
-          <b>{props.price} руб.</b>
+          <b>{price} руб.</b>
         </div>
         <img
           alt="plus"

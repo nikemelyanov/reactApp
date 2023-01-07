@@ -1,50 +1,54 @@
 import styles from "./Cart.module.scss";
 
-function Overlay(props) {
+function Overlay({onClose, items = []}) {
   return (
     <div className={styles.overlay}>
       <div className={styles.cart}>
         <h2 className={styles.cartName}>
           Корзина{" "}
           <img
-            onClick={props.onClose}
+            onClick={onClose}
             className={styles.cartItemRemoveButton}
             src="/img/icon-cart-remove-active.svg"
             alt="Remove"
-          />
+          /> 
         </h2>
 
-        <div className={styles.cartItems}>
-          <div className={styles.cartItem}>
-            <div
-              className={styles.cartItemCrossImg}
-              style={{
-                backgroundImage: "url(/img/photo-shpickers/cross-1.jpg)",
-              }}
-            ></div>
-            <div className={styles.cartCenterInfo}>
-              <p>Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
+        {
+          items.map((obj) => (
+            <div className={styles.cartItems}>
+              <div className={styles.cartItem}>
+                <div
+                  className={styles.cartItemCrossImg}
+                  style={{
+                    backgroundImage: `url(${obj.imageUrl})`,
+                  }}
+                ></div>
+                <div className={styles.cartCenterInfo}>
+                  <p>{obj.title}</p>
+                  <b>{obj.price} руб.</b>
+                </div>
+                <img
+                  className={styles.cartItemRemoveButton}
+                  src="/img/icon-cart-remove-active.svg"
+                  alt="Remove"
+                />
+              </div>
             </div>
-            <img
-              className={styles.cartItemRemoveButton}
-              src="/img/icon-cart-remove-active.svg"
-              alt="Remove"
-            />
-          </div>
-        </div>
+          ))
+        }
 
         <div className={styles.cartBottom}>
           <ul className={styles.cartBottomUl}>
             <li className={styles.cartBottomLi}>
               <span>Итого:</span>
               <div></div>
-              <b>21 498 руб.</b>
+              <b>0 руб.</b>
             </li>
             <li className={styles.cartBottomLi}>
               <span>Налог 5%:</span>
               <div></div>
-              <b>1074 руб.</b>
+              <b>0 руб.</b>
             </li>
           </ul>
           <button className={styles.cartBottomButton}>
