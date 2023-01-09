@@ -11,8 +11,10 @@ function Card({title, price, imageUrl, addToCart, addToFavorite }) {
 
   const [isAdded, setIsAdded] = React.useState(false);
   const onClickPlus = () => {
-    addToCart({title, imageUrl, price})
     setIsAdded(!isAdded)
+    if (!isAdded) {
+      addToCart({title, imageUrl, price})
+    }
   };
 
   return (

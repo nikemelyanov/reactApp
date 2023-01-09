@@ -11,27 +11,33 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
 
   React.useEffect(() => {
-    fetch('https://63b8300a6f4d5660c6cf202e.mockapi.io/items')
+    fetch("https://63b8300a6f4d5660c6cf202e.mockapi.io/items")
       .then((res) => {
-        return res.json()
+        return res.json();
       })
       .then((json) => {
-        setItems(json)
-      })
-  })
+        setItems(json);
+      });
+  });
 
-  const onAddToFavorite = (obj) => {}
+  const onAddToFavorite = (obj) => {};
 
   const onAddToCart = (obj) => {
-    setCartItems(prev => [...prev, obj])
-  }
+    setCartItems((prev) => [...prev, obj]);
+  };
+  const remuveCart = (obj) => {
+    setCartItems([]);
+  };
 
   return (
     <div className="wrapper">
-      {cartOpened && <Cart
-        onClose={() => setCartOpened(false)}
-        items={cartItems}
-      />}
+      {cartOpened && (
+        <Cart
+          onClose={() => setCartOpened(false)}
+          items={cartItems}
+          remuveCartItem={remuveCart}
+        />
+      )}
 
       <Header onClickCart={() => setCartOpened(true)} />
 
@@ -51,7 +57,7 @@ function App() {
               price={item.price}
               imageUrl={item.imageUrl}
               addToCart={(obj) => onAddToCart(obj)}
-              addToFavorite={() => console.log('нажали лайк')}
+              addToFavorite={() => console.log("нажали лайк")}
             />
           ))}
         </div>
