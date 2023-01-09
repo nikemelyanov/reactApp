@@ -3,16 +3,16 @@ import styles from "./Card.module.scss";
 
 function Card({title, price, imageUrl, addToCart, addToFavorite }) {
 
-  const [isAdded, setIsAdded] = React.useState(false);
-  const onClickPlus = () => {
-    addToCart({title, imageUrl, price})
-    setIsAdded(!isAdded)
-  };
-
   const [isLiked, setIsLiked] = React.useState(false);
   const onClickLike = () => {
     addToFavorite()
     setIsLiked(!isLiked)
+  };
+
+  const [isAdded, setIsAdded] = React.useState(false);
+  const onClickPlus = () => {
+    addToCart({title, imageUrl, price})
+    setIsAdded(!isAdded)
   };
 
   return (

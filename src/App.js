@@ -20,8 +20,10 @@ function App() {
       })
   })
 
-  const onAddToCart = (item) => {
-    setCartItems((prev => [...prev, item]))
+  const onAddToFavorite = (obj) => {}
+
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj])
   }
 
   return (
@@ -45,11 +47,10 @@ function App() {
         <div className="shpickers">
           {items.map((item) => (
             <Card
-              key={item.id}
               title={item.title}
               price={item.price}
               imageUrl={item.imageUrl}
-              addToCart={() => onAddToCart(item)}
+              addToCart={(obj) => onAddToCart(obj)}
               addToFavorite={() => console.log('нажали лайк')}
             />
           ))}
