@@ -1,11 +1,6 @@
 import styles from "./Cart.module.scss";
 
-function Overlay({ onClose, items = [], remuveCartItem }) {
-  
-  const onClickRemove = () => {
-    remuveCartItem()
-  };
-
+function Overlay({onClose, items = []}) {
   return (
     <div className={styles.overlay}>
       <div className={styles.cart}>
@@ -16,31 +11,32 @@ function Overlay({ onClose, items = [], remuveCartItem }) {
             className={styles.cartItemRemoveButton}
             src="/img/icon-cart-remove-active.svg"
             alt="Remove"
-          />
+          /> 
         </h2>
 
-        <div className={styles.cartItems}>
-          {items.map((obj) => (
-            <div className={styles.cartItem}>
-              <div
-                className={styles.cartItemCrossImg}
-                style={{
-                  backgroundImage: `url(${obj.imageUrl})`,
-                }}
-              ></div>
-              <div className={styles.cartCenterInfo}>
-                <p>{obj.title}</p>
-                <b>{obj.price} руб.</b>
+        {
+          items.map((item) => (
+            <div className={styles.cartItems}>
+              <div className={styles.cartItem}>
+                <div
+                  className={styles.cartItemCrossImg}
+                  style={{
+                    backgroundImage: `url(${item.imageUrl})`,
+                  }}
+                ></div>
+                <div className={styles.cartCenterInfo}>
+                  <p>{item.title}</p>
+                  <b>{item.price} руб.</b>
+                </div>
+                <img
+                  className={styles.cartItemRemoveButton}
+                  src="/img/icon-cart-remove-active.svg"
+                  alt="removeCartItem"
+                />
               </div>
-              <img
-                className={styles.cartItemRemoveButton}
-                src="/img/icon-cart-remove-active.svg"
-                alt="Remove"
-                onClick={onClickRemove}
-              />
             </div>
-          ))}
-        </div>
+          ))
+        }
 
         <div className={styles.cartBottom}>
           <ul className={styles.cartBottomUl}>
