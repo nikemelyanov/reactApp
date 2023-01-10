@@ -1,6 +1,6 @@
 import styles from "./Cart.module.scss";
 
-function Overlay({onClose, items = []}) {
+function Overlay({ onClose, items = [] }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.cart}>
@@ -11,12 +11,12 @@ function Overlay({onClose, items = []}) {
             className={styles.cartItemRemoveButton}
             src="/img/icon-cart-remove-active.svg"
             alt="Remove"
-          /> 
+          />
         </h2>
 
-        {
-          items.map((item) => (
-            <div className={styles.cartItems}>
+        <div className={styles.cartItems}>
+          {
+            items.map((item) => (
               <div className={styles.cartItem}>
                 <div
                   className={styles.cartItemCrossImg}
@@ -34,9 +34,9 @@ function Overlay({onClose, items = []}) {
                   alt="removeCartItem"
                 />
               </div>
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
 
         <div className={styles.cartBottom}>
           <ul className={styles.cartBottomUl}>
