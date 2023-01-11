@@ -1,6 +1,6 @@
 import styles from "./Cart.module.scss";
 
-function Overlay({ onClose, items = [] }) {
+function Overlay({ onClose, items = [], remuveCartItem }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.cart}>
@@ -14,48 +14,70 @@ function Overlay({ onClose, items = [] }) {
           />
         </h2>
 
-        <div className={styles.cartItems}>
-          {
-            items.map((item) => (
-              <div className={styles.cartItem}>
-                <div
-                  className={styles.cartItemCrossImg}
-                  style={{
-                    backgroundImage: `url(${item.imageUrl})`,
-                  }}
-                ></div>
-                <div className={styles.cartCenterInfo}>
-                  <p>{item.title}</p>
-                  <b>{item.price} руб.</b>
+        {items.length > 0 ? (
+          <div>
+            <div className={styles.cartItems}>
+              {items.map((item) => (
+                <div className={styles.cartItem}>
+                  <div
+                    className={styles.cartItemCrossImg}
+                    style={{
+                      backgroundImage: `url(${item.imageUrl})`,
+                    }}
+                  ></div>
+                  <div className={styles.cartCenterInfo}>
+                    <p>{item.title}</p>
+                    <b>{item.price} руб.</b>
+                  </div>
+                  <img
+                    className={styles.cartItemRemoveButton}
+                    src="/img/icon-cart-remove-active.svg"
+                    alt="removeCartItem"
+                    onClick={() => remuveCartItem(item.id)}
+                  />
                 </div>
-                <img
-                  className={styles.cartItemRemoveButton}
-                  src="/img/icon-cart-remove-active.svg"
-                  alt="removeCartItem"
-                />
-              </div>
-            ))
-          }
-        </div>
+              ))}
+            </div>
 
-        <div className={styles.cartBottom}>
-          <ul className={styles.cartBottomUl}>
-            <li className={styles.cartBottomLi}>
-              <span>Итого:</span>
-              <div></div>
-              <b>0 руб.</b>
-            </li>
-            <li className={styles.cartBottomLi}>
-              <span>Налог 5%:</span>
-              <div></div>
-              <b>0 руб.</b>
-            </li>
-          </ul>
-          <button className={styles.cartBottomButton}>
-            Оформить заказ{" "}
-            <img src="/img/icon-cart-button-arrow.svg" alt="Arrow" />
-          </button>
-        </div>
+            <div className={styles.cartBottom}>
+              <ul className={styles.cartBottomUl}>
+                <li className={styles.cartBottomLi}>
+                  <span>Итого:</span>
+                  <div></div>
+                  <b>0 руб.</b>
+                </li>
+                <li className={styles.cartBottomLi}>
+                  <span>Налог 5%:</span>
+                  <div></div>
+                  <b>0 руб.</b>
+                </li>
+              </ul>
+              <button className={styles.cartBottomButton}>
+                Оформить заказ{" "}
+                <img src="/img/icon-cart-button-arrow.svg" alt="Arrow" />
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.emplyBasketWrapper}>
+            <div className={styles.emplyBasket}>
+              <img src="/img/empty basket.png" alt="empty basket"></img>
+              <h2>Корзина пустая</h2>
+              <div className={styles.emplyBasketInfo}>
+                <p>
+                  Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.
+                </p>
+              </div>
+              <button
+                onClick={() => onClose()}
+                className={styles.cartBasketRemove}
+              >
+                <img src="/img/icon-cart-button-arrow.svg" alt="Arrow" />
+                Вернуться назад{" "}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
