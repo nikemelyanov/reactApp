@@ -27,7 +27,8 @@ function App() {
   }, []);
 
   const onAddToFavorite = (obj) => {
-    
+    axios.post("https://63bf0554585bedcb36bd8a4b.mockapi.io/Favorites", obj);
+    setFavoriteItems((prev) => [...prev, obj]);
   };
 
   const onAddToCart = (obj) => {
@@ -85,7 +86,7 @@ function App() {
                 price={item.price}
                 imageUrl={item.imageUrl}
                 addToCart={(obj) => onAddToCart(obj)}
-                addToFavorite={() => console.log("нажали лайк")}
+                addToFavorite={(obj) => onAddToFavorite(obj)}
               />
             ))}
         </div>
