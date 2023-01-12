@@ -4,7 +4,7 @@ import axios from "axios";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
-//1:14
+//1:18
 
 function App() {
   const [items, setItems] = React.useState([]);
@@ -37,7 +37,7 @@ function App() {
 
   const onRemuveCart = (id) => {
     axios.delete(`https://63b8300a6f4d5660c6cf202e.mockapi.io/Cart/${id}`);
-    setCartItems((prev) => prev.filter(item => item.id !== id));
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
   const onChangeSearchInput = (event) => {
