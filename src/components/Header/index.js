@@ -1,16 +1,19 @@
+import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 
 function Header(props) {
 
   return (
     <header>
-      <div className={styles.headerLogo}>
-        <img width={40} height={40} src="/img/logo.png" />
-        <div className={styles.headerLogoTitle}>
-          <h3>React Sneakers</h3>
-          <p>Магазин кроссов</p>
+      <Link to={"/"}>
+        <div className={styles.headerLogo}>
+          <img width={40} height={40} src="/img/logo.png" />
+          <div className={styles.headerLogoTitle}>
+            <h3>React Sneakers</h3>
+            <p>Магазин кроссов</p>
+          </div>
         </div>
-      </div>
+      </Link>
       <ul className={styles.headerRight}>
         <li onClick={props.onClickCart}>
           <img
@@ -22,12 +25,14 @@ function Header(props) {
           <span>1260 руб.</span>
         </li>
         <li>
-          <img
-            width={18}
-            height={18}
-            src="/img/header/icon-head-likes.svg"
-            alt="Favorite"
-          />
+          <Link to={"favorites"}>
+            <img
+              width={18}
+              height={18}
+              src="/img/header/icon-head-likes.svg"
+              alt="Favorite"
+            />
+          </Link>
         </li>
         <li>
           <img

@@ -4,8 +4,10 @@ import styles from "./Card.module.scss";
 function Card({ title, price, imageUrl, addToCart, addToFavorite }) {
   const [isLiked, setIsLiked] = React.useState(false);
   const onClickLike = () => {
-    addToFavorite({ title, imageUrl, price });
     setIsLiked(!isLiked);
+    if (!isLiked) {
+      addToFavorite({ title, imageUrl, price });
+    }
   };
 
   const [isAdded, setIsAdded] = React.useState(false);

@@ -1,9 +1,10 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 
-import Card from "./components/Card";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
+import Home from "./pages/Home";
 //1:18
 
 function App() {
@@ -57,40 +58,20 @@ function App() {
 
       <Header onClickCart={() => setCartOpened(true)} />
 
-      <div className="content">
-        <div className="allCrossAndInputSerach">
-          <h1>
-            {searchValue
-              ? `Поиск по запросу: "${searchValue}"`
-              : "Все кроссовки"}
-          </h1>
-          <div className="searchBlock">
-            <img src="/img/icon-input-search.svg" alt="Search" />
-            <input
-              onChange={onChangeSearchInput}
-              value={searchValue}
-              placeholder="Поиск..."
-            ></input>
-          </div>
-        </div>
+      <Routes>
+        <Route path="/" element={
+          <Home
+            items={items}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            onChangeSearchInput={onChangeSearchInput}
+            onAddToCart={onAddToCart}
+            onAddToFavorite={onAddToFavorite}
+          />
+        }
+        />
+      </Routes>
 
-        <div className="shpickers">
-          {items
-            .filter((item) =>
-              item.title.toLowerCase().includes(searchValue.toLowerCase())
-            )
-            .map((item) => (
-              <Card
-                key={item.title}
-                title={item.title}
-                price={item.price}
-                imageUrl={item.imageUrl}
-                addToCart={(obj) => onAddToCart(obj)}
-                addToFavorite={(obj) => onAddToFavorite(obj)}
-              />
-            ))}
-        </div>
-      </div>
     </div>
   );
 }
