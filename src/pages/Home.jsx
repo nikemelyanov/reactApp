@@ -27,11 +27,9 @@ function Home({items, searchValue, onAddToCart, onAddToFavorite, onChangeSearchI
           .map((item) => (
             <Card
               key={item.title}
-              title={item.title}
-              price={item.price}
-              imageUrl={item.imageUrl}
               addToCart={(obj) => onAddToCart(obj)}
               addToFavorite={(obj) => onAddToFavorite(obj)}
+              {...item}
             />
           ))}
       </div>
