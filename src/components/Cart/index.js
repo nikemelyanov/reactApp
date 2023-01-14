@@ -17,23 +17,23 @@ function Overlay({ onClose, items = [], remuveCartItem }) {
         {items.length > 0 ? (
           <div>
             <div className={styles.cartItems}>
-              {items.map((item) => (
-                <div className={styles.cartItem}>
+              {items.map((obj) => (
+                <div key={obj.id} className={styles.cartItem}>
                   <div
                     className={styles.cartItemCrossImg}
                     style={{
-                      backgroundImage: `url(${item.imageUrl})`,
+                      backgroundImage: `url(${obj.imageUrl})`,
                     }}
                   ></div>
                   <div className={styles.cartCenterInfo}>
-                    <p>{item.title}</p>
-                    <b>{item.price} руб.</b>
+                    <p>{obj.title}</p>
+                    <b>{obj.price} руб.</b>
                   </div>
                   <img
                     className={styles.cartItemRemoveButton}
                     src="/img/icon-cart-remove-active.svg"
                     alt="removeCartItem"
-                    onClick={() => remuveCartItem(item.id)}
+                    onClick={() => remuveCartItem(obj.id)}
                   />
                 </div>
               ))}
@@ -73,7 +73,7 @@ function Overlay({ onClose, items = [], remuveCartItem }) {
                 className={styles.cartBasketRemove}
               >
                 <img src="/img/icon-cart-button-arrow.svg" alt="Arrow" />
-                Вернуться назад{" "}
+                Вернуться назад
               </button>
             </div>
           </div>
