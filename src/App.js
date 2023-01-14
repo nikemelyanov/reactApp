@@ -7,7 +7,7 @@ import Cart from "./components/Cart";
 
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
-//
+//1^53
 
 function App() {
   const [items, setItems] = React.useState([]);
