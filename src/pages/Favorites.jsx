@@ -1,6 +1,10 @@
+import React from "react";
 import Card from "../components/Card";
+import AppContext from "../context";
 
-function Favorites({ items, onAddToCart, onAddToFavorite }) {
+function Favorites({ onAddToCart, onAddToFavorite }) {
+  const { favoriteItems } = React.useContext(AppContext);
+
   return (
     <div className="content">
       <div className="allCrossAndInputSerach">
@@ -8,15 +12,15 @@ function Favorites({ items, onAddToCart, onAddToFavorite }) {
       </div>
 
       <div className="shpickers">
-        {items.map((item) => (
-            <Card
-              key={item.title}
-              favorited={true}
-              addToCart={(obj) => onAddToCart(obj)}
-              addToFavorite={(obj) => onAddToFavorite(obj)}
-              {...item}
-            />
-          ))}
+        {favoriteItems.map((item) => (
+          <Card
+            key={item.title}
+            favorited={true}
+            addToCart={(obj) => onAddToCart(obj)}
+            addToFavorite={(obj) => onAddToFavorite(obj)}
+            {...item}
+          />
+        ))}
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ function Card({
 }) {
   const [isLiked, setIsLiked] = React.useState(favorited);
   const [isAdded, setIsAdded] = React.useState(added);
-
+ 
   const onClickLike = () => {
     setIsLiked(!isLiked);
     addToFavorite({ id, title, imageUrl, price });
