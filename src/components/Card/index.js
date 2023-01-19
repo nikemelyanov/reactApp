@@ -1,5 +1,8 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
+
+import AppContext from "../../context";
+
 import styles from "./Card.module.scss";
 
 function Card({
@@ -10,20 +13,19 @@ function Card({
   addToCart,
   addToFavorite,
   favorited = false,
-  added = false,
   loading = false,
 }) {
+  const { isItemAdded } = React.useContext(AppContext);
   const [isLiked, setIsLiked] = React.useState(favorited);
-  const [isAdded, setIsAdded] = React.useState(added);
- 
+  const obj = { id, parrentId: id, title, imageUrl, price }
+
   const onClickLike = () => {
     setIsLiked(!isLiked);
-    addToFavorite({ id, title, imageUrl, price });
+    addToFavorite(obj);
   };
 
   const onClickPlus = () => {
-    setIsAdded(!isAdded);
-    addToCart({ id, title, imageUrl, price });
+    addToCart(obj);
   };
 
   return (
@@ -46,7 +48,7 @@ function Card({
       ) : (
         <>
           <div className={styles.cardFavorite}>
-            <img
+            {addToFavorite && <img
               alt="Favorite"
               width={30}
               height={30}
@@ -56,7 +58,7 @@ function Card({
                   ? "/img/icon-card-likes-active.svg"
                   : "/img/icon-card-likes.svg"
               }
-            />
+            />}
           </div>
           <img
             className={styles.carImageUrl}
@@ -71,16 +73,18 @@ function Card({
               <span>Цена:</span>
               <b>{price} руб.</b>
             </div>
-            <img
-              alt="plus"
-              className={styles.plus}
-              onClick={onClickPlus}
-              src={
-                isAdded
-                  ? "/img/icon-card-plus-active.svg"
-                  : "/img/icon-card-plus.svg"
-              }
-            />
+            {addToCart && (
+              <img
+                alt="plus"
+                className={styles.plus}
+                onClick={onClickPlus}
+                src={
+                  isItemAdded(id)
+                    ? "/img/icon-card-plus-active.svg"
+                    : "/img/icon-card-plus.svg"
+                }
+              />
+            )}
           </div>
         </>
       )}

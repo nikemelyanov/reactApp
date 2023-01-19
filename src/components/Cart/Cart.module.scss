@@ -1,4 +1,6 @@
 .overlay {
+  overflow: hidden;
+  visibility: hidden;
   position: absolute;
   left: 0;
   top: 0;
@@ -7,203 +9,172 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.overlayVisible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+
   .cart {
-    position: absolute;
-    width: 420px;
-    height: 100%;
-    right: 0;
-    background: #ffffff;
-    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    transform: translateX(0);
+  }
+}
+
+.cartWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.cart {
+  position: absolute;
+  width: 420px;
+  height: 100%;
+  right: 0;
+  background: #ffffff;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+
+  transform: translateX(100%);
+  transition: transform 0.2s ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+
+  .cartName {
+    margin-bottom: 30px;
 
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+  }
 
-    .emplyBasketWrapper {
-      height: 100%;
-      width: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+  .cartItems {
+    flex: 1;
+    overflow: auto;
+    margin-bottom: 40px;
+  }
 
-      .emplyBasket {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-  
-        img {
-          margin-bottom: 20px;
-        }
-  
-        h2 {
-          font-size: 22px;
-          margin-bottom: 20px;
-        }
-        
-        .emplyBasketInfo {
-          width: 80%;
-          text-align: center;
-          margin-bottom: 20px;
-          p {
-            font-size: 16px;
-            line-height: 24px;
-          }
-        }
-  
-        .cartBasketRemove {
-          width: 70%;
-          height: 55px;
-          background: #9dd558;
-          border-radius: 18px;
-          border: none;
-          color: #fff;
-          font-size: 16px;
-          font-weight: 500;
-          transition: 0.2s;
-          cursor: pointer;
-  
-          &:hover {
-            background: lighten(#9dd558, 5%);
-          }
-  
-          &:active {
-            background: darken(#9dd558, 5%);
-          }
-        }
-  
-        .cartBasketRemove {
-          position: relative;
-  
-          &:hover {
-            img {
-              transform: translate(-5px);
-            }
-          }
-  
-          img {
-            position: absolute;
-            left: 30px;
-            top: 21px;
-            transform: rotate(180deg);
-            transition: transform 0.15s;
-          }
-        }
-      }
+  .cartItem {
+    border: 1px solid #f3f3f3;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+
+    .cartItemCrossImg {
+      width: 70px;
+      height: 70px;
+      background-size: contain;
+      background-position: 0 10px;
+      background-repeat: no-repeat;
+      margin-right: 20px;
     }
 
-    .cartName {
-      margin-bottom: 30px;
-
-      display: flex;
-      justify-content: space-between;
+    p {
+      font-size: 16px;
+      margin-bottom: 5px;
     }
 
-    .cartItems {
-      flex: 1;
-      overflow: auto;
+    b {
+      font-size: 14px;
+    }
+
+    .cartCenterInfo {
+      margin-right: 20px;
+    }
+  }
+
+  .cartItemRemoveButton {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.15s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .cartBottom {
+    .cartBottomUl {
       margin-bottom: 40px;
     }
 
-    .cartItem {
-      border: 1px solid #f3f3f3;
-      border-radius: 20px;
-      overflow: hidden;
-      padding: 15px 30px;
+    .cartBottomLi {
       margin-bottom: 20px;
 
       display: flex;
-      align-items: center;
+      align-items: flex-end;
 
-      .cartItemCrossImg {
-        width: 70px;
-        height: 70px;
-        background-size: contain;
-        background-position: 0 10px;
-        background-repeat: no-repeat;
-        margin-right: 20px;
-      }
-
-      p {
-        font-size: 16px;
-        margin-bottom: 5px;
-      }
-
-      b {
-        font-size: 14px;
-      }
-
-      .cartCenterInfo {
-        margin-right: 20px;
+      div {
+        flex: 1;
+        height: 1px;
+        border-bottom: 1px dashed #dfdfdf;
+        margin: 0 7px;
+        position: relative;
+        top: -4px;
       }
     }
 
-    .cartItemRemoveButton {
+    .cartBottomButton {
+      width: 100%;
+      height: 55px;
+      background: #9dd558;
+      border-radius: 18px;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      transition: 0.2s;
       cursor: pointer;
-      opacity: 0.5;
-      transition: 0.15s;
+
+      &:disabled {
+        background-color: #bebebe !important;
+        cursor: default;
+      }
 
       &:hover {
-        opacity: 1;
+        background: lighten(#9dd558, 5%);
+      }
+
+      &:active {
+        background: darken(#9dd558, 5%);
       }
     }
 
-    .cartBottom {
-      .cartBottomUl {
-        margin-bottom: 40px;
+    .cartBottomButton {
+      position: relative;
+
+      &:disabled {
+        animation: button-loading 2s ease-in-out infinite;
       }
 
-      .cartBottomLi {
-        margin-bottom: 20px;
-
-        display: flex;
-        align-items: flex-end;
-
-        div {
-          flex: 1;
-          height: 1px;
-          border-bottom: 1px dashed #dfdfdf;
-          margin: 0 7px;
-          position: relative;
-          top: -4px;
-        }
-      }
-
-      .cartBottomButton {
-        width: 100%;
-        height: 55px;
-        background: #9dd558;
-        border-radius: 18px;
-        border: none;
-        color: #fff;
-        font-size: 16px;
-        font-weight: 500;
-        transition: 0.2s;
-        cursor: pointer;
-
-        &:hover {
-          background: lighten(#9dd558, 5%);
-        }
-
-        &:active {
-          background: darken(#9dd558, 5%);
-        }
-      }
-
-      .cartBottomButton {
-        position: relative;
-
-        &:hover {
-          img {
-            transform: translateX(5px);
-          }
-        }
-
+      &:hover {
         img {
-          position: absolute;
-          right: 30px;
-          top: 21px;
-          transition: transform 0.15s;
+          transform: translateX(5px);
         }
+      }
+
+      img {
+        position: absolute;
+        right: 30px;
+        top: 21px;
+        transition: transform 0.15s;
+      }
+    }
+    @keyframes button-loading {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        opacity: 1;
       }
     }
   }
