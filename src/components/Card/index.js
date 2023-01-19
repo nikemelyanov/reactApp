@@ -26,6 +26,7 @@ function Card({
 
   const onClickPlus = () => {
     addToCart(obj);
+    console.log(obj)
   };
 
   return (
