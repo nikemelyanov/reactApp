@@ -10,7 +10,7 @@ import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
 
 import AppContext from "./context";
-//
+//1:57
 
 function App() {
   const [items, setItems] = React.useState([]);
@@ -70,7 +70,7 @@ function App() {
 
   const onAddToCart = async (obj) => {
     try {
-      if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+      if (cartItems.find((item) => Number(item.parrentId) === Number(obj.id))) {
         setCartItems((prev) =>
           prev.filter((item) => Number(item.id) !== Number(obj.id))
         );
@@ -92,7 +92,7 @@ function App() {
   const onRemuveCart = (id) => {
     try {
       axios.delete(`https://63b8300a6f4d5660c6cf202e.mockapi.io/Cart/${id}`);
-      setCartItems((prev) => prev.filter((item) => item.id !== id));
+      setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)));
     } catch (error) {
       alert("Не удалось удалить товар из корзины.");
     }
