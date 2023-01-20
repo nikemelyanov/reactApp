@@ -42,9 +42,10 @@
 
 @media screen and (max-width: 480px) {
   .card {
+    height: 380px;
     width: 350px;
-    padding: 20px;
-    margin-bottom: 30px;
+    padding: 30px;
+    margin-bottom: 0px;
 
     .carImageUrl {
       height: 200px;

@@ -11,7 +11,15 @@ body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #e7f6ff;
+  // background: #e7f6ff;
+  background-image: linear-gradient(
+    to bottom,
+    #e7f6ff,
+    #e7f4ff,
+    #e8f1ff,
+    #ebeeff,
+    #efebff
+  );
 }
 
 button,
@@ -61,19 +69,18 @@ input {
   }
 }
 
-
 @media screen and (max-width: 480px) {
   .wrapper {
-    margin: 70px auto;
+    margin: 70px 5px;
 
     .content {
       padding: 40px 20px;
-    
+
       .allCrossAndInputSerach {
         h1 {
           font-size: 20px;
         }
-    
+
         .searchBlock {
           input {
             font-size: 16px;
@@ -81,13 +88,12 @@ input {
           }
         }
       }
-    
+
       .shpickers {
         display: flex;
         flex-direction: column;
         align-items: center;
         // gap: 30px;
-
       }
     }
   }
