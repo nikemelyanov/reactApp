@@ -1,0 +1,28 @@
+.wrapper {
+  height: 150px;
+  width: 100%;
+  background: #f4efe9;
+  border-radius: 30px;
+  margin-bottom: 50px;
+  background-image: url(../../../public/img/Poster1.jpg);
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    color: #fffbf5;
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    .title {
+      font-size: 21px;
+    }
+  }
+}

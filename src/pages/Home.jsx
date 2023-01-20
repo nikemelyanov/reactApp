@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../components/Card";
+import Poster from "../components/Poster";
 
 function Home({
   items,
@@ -27,6 +28,8 @@ function Home({
 
   return (
     <div className="content">
+      <Poster />
+
       <div className="allCrossAndInputSerach">
         <h1>
           {searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}
@@ -40,7 +43,7 @@ function Home({
           ></input>
         </div>
       </div>
-
+      
       <div className="shpickers">{renderItems()}</div>
     </div>
   );
