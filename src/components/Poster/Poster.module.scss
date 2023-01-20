@@ -1,28 +1,112 @@
-.wrapper {
-  height: 150px;
+.posterOne {
+  height: 250px;
   width: 100%;
-  background: #f4efe9;
-  border-radius: 30px;
-  margin-bottom: 50px;
-  background-image: url(../../../public/img/Poster1.jpg);
-  background-position: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-image: url(../../../public/img/Poster4.jpg);
   background-size: cover;
+  background-position: center;
+  transition: 0.3s;
+  cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .title {
-    color: #fffbf5;
-    font-size: 40px;
+  .posterOneTitle {
+    color: #fff;
+    font-size: 33px;
     text-transform: uppercase;
+    opacity: 1;
+  }
+}
+.posterOne:hover {
+  transform: scale(1.01);
+}
+
+.posterFlex {
+  display: flex;
+
+  margin-bottom: 50px;
+
+  .posterTwo {
+    height: 80px;
+    width: 50%;
+    border-radius: 10px;
+    margin-right: 5px;
+    background: rgb(210, 190, 175);
+    background: rgb(210, 190, 175);
+    background: linear-gradient(
+      90deg,
+      rgba(210, 190, 175, 1) 0%,
+      rgba(189, 173, 161, 1) 34%,
+      rgba(129, 149, 164, 1) 78%,
+      rgba(110, 151, 175, 1) 100%
+    );
+    transition: 0.3s;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .posterTwoTitle {
+      color: #fff;
+      font-size: 19px;
+      text-transform: uppercase;
+      opacity: 1;
+    }
+  }
+  .posterTwo:hover {
+    transform: scale(1.01);
+  }
+
+  .posterThree {
+    height: 80px;
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 5px;
+    background: rgb(110, 151, 175);
+    background: linear-gradient(
+      90deg,
+      rgba(110, 151, 175, 1) 0%,
+      rgba(64, 116, 149, 1) 100%
+    );
+    transition: 0.3s;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .posterThreeTitle {
+      color: #363636;
+      font-size: 19px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+  }
+  .posterThree:hover {
+    transform: scale(1.01);
   }
 }
 
 @media screen and (max-width: 480px) {
-  .wrapper {
-    .title {
+  .posterOne {
+    .posterOneTitle {
       font-size: 21px;
+    }
+  }
+  .posterFlex {
+    .posterTwo {
+      .posterTwoTitle {
+        font-size: 13px;
+      }
+    }
+    .posterThree {
+      .posterThreeTitle {
+        font-size: 13px;
+      }
     }
   }
 }
