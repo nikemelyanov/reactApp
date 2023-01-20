@@ -70,18 +70,32 @@ function App() {
 
   const onAddToCart = async (obj) => {
     try {
-      if (cartItems.find((item) => Number(item.parrentId) === Number(obj.id))) {
+      const findItem = cartItems.find(
+        (item) => Number(item.parrentId) === Number(obj.id)
+      );
+      if (findItem) {
         setCartItems((prev) =>
-          prev.filter((item) => Number(item.id) !== Number(obj.id))
+          prev.filter((item) => Number(item.parrentId) !== Number(obj.id))
         );
         await axios.delete(
-          `https://63b8300a6f4d5660c6cf202e.mockapi.io/Cart/${obj.id}`
+          `https://63b8300a6f4d5660c6cf202e.mockapi.io/Cart/${findItem.id}`
         );
       } else {
         setCartItems((prev) => [...prev, obj]);
-        await axios.post(
+        const { data } = await axios.post(
           "https://63b8300a6f4d5660c6cf202e.mockapi.io/Cart",
           obj
+        );
+        setCartItems((prev) =>
+          prev.map((item) => {
+            if (item.parrentId === data.parrentId) {
+              return {
+                ...item,
+                id: data.id,
+              };
+            }
+            return item;
+          })
         );
       }
     } catch (error) {
@@ -92,7 +106,9 @@ function App() {
   const onRemuveCart = (id) => {
     try {
       axios.delete(`https://63b8300a6f4d5660c6cf202e.mockapi.io/Cart/${id}`);
-      setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)));
+      setCartItems((prev) =>
+        prev.filter((item) => Number(item.id) !== Number(id))
+      );
     } catch (error) {
       alert("Не удалось удалить товар из корзины.");
     }
